@@ -1,1 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Totally Serious Website</title>
+  <style>
+    body {
+      background-color: #fefbd8;
+      font-family: Comic Sans MS, cursive, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 60px;
+      color: #ff6347;
+      animation: shake 0.5s infinite;
+    }
+    p {
+      font-size: 20px;
+      color: #333;
+    }
+    .btn {
+      background-color: #ff69b4;
+      color: white;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #ff1493;
+    }
+    @keyframes shake {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(2deg); }
+      50% { transform: rotate(0deg); }
+      75% { transform: rotate(-2deg); }
+      100% { transform: rotate(0deg); }
+    }
+  </style>
+</head>
+<body>
 
+  <h1>Oops! 404?</h1>
+  <p>Just kidding! You actually found the secret page where we hide the cookies 🍪</p>
+  <p>Unfortunately, we already ate them.</p>
+
+  <button class="btn" onclick="alert('You pressed the forbidden button. Now the ducks are coming! 🦆🦆🦆')">
+    Don't Click Me
+  </button>
+
+</body>
+</html>
