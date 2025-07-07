@@ -1,54 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Totally Serious Website</title>
-  <style>
-    body {
-      background-color: #fefbd8;
-      font-family: Comic Sans MS, cursive, sans-serif;
-      text-align: center;
-      padding: 50px;
-    }
-    h1 {
-      font-size: 60px;
-      color: #ff6347;
-      animation: shake 0.5s infinite;
-    }
-    p {
-      font-size: 20px;
-      color: #333;
-    }
-    .btn {
-      background-color: #ff69b4;
-      color: white;
-      padding: 10px 20px;
-      font-size: 18px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-    .btn:hover {
-      background-color: #ff1493;
-    }
-    @keyframes shake {
-      0% { transform: rotate(0deg); }
-      25% { transform: rotate(2deg); }
-      50% { transform: rotate(0deg); }
-      75% { transform: rotate(-2deg); }
-      100% { transform: rotate(0deg); }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavor Fusion - Our Delicious Menu</title>
+    <!-- Favicon: A little chef hat or a fork and knife -->
+    <link rel="icon" href="https://placehold.co/32x32/ff6b6b/ffffff?text=🍴" type="image/png">
+    <!-- Google Fonts for a warm, inviting feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Basic reset and body styling */
+        body {
+            margin: 0;
+            font-family: 'Open Sans', sans-serif; /* Clean and readable font */
+            background: linear-gradient(to bottom, #fdfbfb 0%, #ebedee 100%); /* Subtle light grey gradient */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Full viewport height */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Main container for the menu */
+        .menu-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 15px; /* Softly rounded corners */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Elegant shadow */
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid #e0e0e0; /* Light border */
+        }
+
+        /* Header styling for the restaurant name */
+        h1 {
+            font-family: 'Playfair Display', serif; /* Elegant, display font for title */
+            color: #8b0000; /* Deep red for a culinary feel */
+            font-size: 3.8em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.08);
+            line-height: 1.1;
+        }
+
+        /* Tagline styling */
+        .tagline {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            color: #555;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        /* Section titles for menu categories */
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #4a4a4a;
+            font-size: 2.5em;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #ff6b6b; /* Vibrant red accent */
+            border-radius: 2px;
+        }
+
+        /* Menu item styling */
+        .menu-item {
+            display: flex;
+            justify-content: space-between; /* Space out name and price */
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #e0e0e0; /* Subtle dashed separator */
+            text-align: left; /* Align text within item to the left */
+        }
+        .menu-item:last-child {
+            border-bottom: none; /* No border for the last item in a section */
+        }
+
+        .item-details {
+            flex-grow: 1; /* Allows details to take up available space */
+        }
+
+        .item-name {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            font-size: 1.3em;
+            color: #444;
+            margin-bottom: 5px;
+        }
+
+        .item-description {
+            font-size: 0.95em;
+            color: #777;
+            line-height: 1.5;
+        }
+
+        .item-price {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.4em;
+            color: #8b0000; /* Matches header red */
+            margin-left: 20px; /* Space from description */
+            white-space: nowrap; /* Prevents price from wrapping */
+        }
+
+        /* Special dish highlight */
+        .special-dish .item-name {
+            color: #d4af37; /* Gold color for specials */
+            font-size: 1.4em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+        .special-dish .item-price {
+            color: #d4af37;
+        }
+        .special-dish .item-description::before {
+            content: '⭐ '; /* Star emoji for specials */
+            color: #d4af37;
+        }
+
+        /* Footer styling */
+        .footer-info {
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.6;
+        }
+        .footer-info a {
+            color: #8b0000;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .footer-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .menu-container {
+                padding: 25px;
+                margin: 10px;
+            }
+            h1 {
+                font-size: 2.8em;
+            }
+            .tagline {
+                font-size: 1.2em;
+                margin-bottom: 30px;
+            }
+            h2 {
+                font-size: 2em;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+            .menu-item {
+                flex-direction: column; /* Stack name/description and price on small screens */
+                align-items: center;
+                text-align: center;
+            }
+            .item-price {
+                margin-left: 0;
+                margin-top: 10px; /* Add space when stacked */
+            }
+            .item-description {
+                margin-top: 5px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <h1>Oops! 404?</h1>
-  <p>Just kidding! You actually found the secret page where we hide the cookies 🍪</p>
-  <p>Unfortunately, we already ate them.</p>
+    <div class="menu-container">
+        <h1>Flavor Fusion</h1>
+        <p class="tagline">Where Every Bite Tells a Story!</p>
 
-  <button class="btn" onclick="alert('You pressed the forbidden button. Now the ducks are coming! 🦆🦆🦆')">
-    Don't Click Me
-  </button>
+        <h2>Appetizers</h2>
+        <div class="menu-item">
+            <div class="item-details">
+                <div class="item-name">Crispy Calamari Rings</div>
+                <div class="item-description">Lightly breaded and fried to golden perfection, served with zesty marinara sauce.</div>
+            </div>
+            <div class="item-price">$12.99</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-details">
+                <div class="item-name">Spinach & Artichoke Dip</div>
+                <div class="item-description">Creamy blend of spinach, artichoke hearts, and cheese, baked and served with warm tortilla chips.</div>
+            </div>
+            <div class="item-price">$10.50</div>
+        </div>
+        <div class="menu-item special-dish">
+            <div class="item-details">
+                <div class="item-name">Chef's Special Bruschetta Trio</div>
+                <div class="item-description">A delightful assortment of classic tomato, olive tapenade, and roasted red pepper bruschetta.</div>
+            </div>
+            <div class="item-price">$14.00</div>
+        </div>
+
+        <h2>Main Courses</h2>
+        <div class="menu-item">
+            <div class="item-details">
+                <div class="item-name">Grilled Salmon with Lemon-Dill Sauce</div>
+                <div class="item-description">Fresh Atlantic salmon grilled to perfection, topped with a light lemon-dill sauce, served with seasonal vegetables.</div>
+            </div>
+            <div class="item-price">$24.99</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-details">
+                <div class="item-name">Classic Beef Lasagna</div>
+                <div class="item-description">Layers of rich meat sauce, creamy béchamel, and tender pasta, baked until bubbly and golden.</div>
+            </div>
+            <div class="item-price">$18.75</div>
+        </div>
+        <div class="menu-item special-dish">
+            <div class="item-details">
+                <div class="item-name">Signature Chicken Parmesan</div>
+                <div class="item-description">Crispy breaded chicken breast smothered in melted mozzarella and marinara, served with spaghetti.</div>
+            </div>
+            <div class="item-price">$21.50</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-details">
+                <div class="item-name">Vegetable Risotto</div>
+                <div class="item-description">Creamy Arborio rice cooked with a medley of fresh seasonal vegetables and Parmesan cheese.</div>
+            </div>
+            <div class="item-price">$17.00</div>
+        </div>
+
+        <h2>Desserts</h2>
+        <div class="menu-item">
+            <div class="item-details">
+                <div class="item-name">Decadent Chocolate Lava Cake</div>
+                <div class="item-description">Warm chocolate cake with a molten center, served with vanilla bean ice cream.</div>
+            </div>
+            <div class="item-price">$9.50</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-details">
+                <div class="item-name">New York Style Cheesecake</div>
+                <div class="item-description">Rich and creamy cheesecake on a graham cracker crust, with your choice of berry or chocolate topping.</div>
+            </div>
+            <div class="item-price">$8.75</div>
+        </div>
+
+        <div class="footer-info">
+            <p>Prices are subject to change. Please inform your server of any allergies.</p>
+            <p>Visit us at: 123 Culinary Lane, Foodie Town, FL 12345 | Call us: <a href="tel:+15551234567">(555) 123-4567</a></p>
+            <p>&copy; 2025 Flavor Fusion Restaurant. All rights reserved.</p>
+        </div>
+    </div>
 
 </body>
 </html>
